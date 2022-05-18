@@ -1,0 +1,260 @@
+<div class="container">
+    <form #registerForm="ngForm">
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Video Url</mat-label>
+                        <input matInput placeholder="url" class="form-control" required appUrlValidator
+                            [(ngModel)]="formData.url" name="url" #url="ngModel">
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="url.invalid && (url.dirty || url.touched)" class="invalid">
+                    <!-- <div *ngIf="username.errors.required"> -->
+                    Url should not be empty / should be in proper format
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Video title</mat-label>
+                        <input matInput placeholder="your title" type="title" class="form-control"
+                            [(ngModel)]="formData.title" name="title" required #title="ngModel">
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="title.invalid && (title.dirty || title.touched)" class="invalid">
+                    <!-- <div *ngIf="username.errors.required"> -->
+                    Title is required
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Channel title</mat-label>
+                        <input matInput placeholder="your title" class="form-control"
+                            [(ngModel)]="formData.channelTilte" name="channelTitle" required #channelTitle="ngModel">
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="channelTitle.invalid && (channelTitle.dirty || channelTitle.touched)"
+                    class="invalid">
+                    <!-- <div *ngIf="username.errors.required"> -->
+                    Channel name is required
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Duration</mat-label>
+                        <input type="time" matInput class="form-control" [(ngModel)]="formData.time" name="time"
+                            #time="ngModel" required>
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="time.invalid && (time.dirty || time.touched)" class="invalid">
+                    <!-- <div *ngIf="time.errors.required"> -->
+                    time is required
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Upload Date</mat-label>
+                        <input type="date" matInput class="form-control" [(ngModel)]="formData.date" name="date"
+                            #date="ngModel" required>
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="date.invalid && (date.dirty || date.touched)" class="invalid">
+                    <!-- <div *ngIf="username.errors.required"> -->
+                    Date is required
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput placeholder="Ex. It makes me feel..." class="form-control"
+                        [(ngModel)]="formData.description" name="description" required
+                        #description="ngModel"></textarea>
+                </mat-form-field>
+                <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                    class="invalid">
+                    <!-- <div *ngIf="username.errors.required"> -->
+                    Description is required
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Your Location</mat-label>
+                    <mat-select [disabled]="disableSelect.value">
+                        <mat-option value="option1">India</mat-option>
+                        <mat-option value="option2">Singapore</mat-option>
+                        <mat-option value="option3">Canada</mat-option>
+                        <mat-option value="option3">Other</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>License</mat-label>
+                    <mat-select [disabled]="disableSelect.value">
+                        <mat-option value="option1">Standard viewtube license</mat-option>
+                        <mat-option value="option2">Common creator license</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Distribution</mat-label>
+                    <mat-select [disabled]="disableSelect.value">
+                        <mat-option value="option1">Everywhere</mat-option>
+                        <mat-option value="option2">Make this video available only on monetized platforms</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Video Category</mat-label>
+                    <mat-select [disabled]="disableSelect.value">
+                        <mat-option value="option1">Film & Animation</mat-option>
+                        <mat-option value="option2">Autos & Vehicles</mat-option>
+                        <mat-option value="option2">Music</mat-option>
+                        <mat-option value="option2">Pets & Animals</mat-option>
+                        <mat-option value="option2">Sports</mat-option>
+                        <mat-option value="option2">Travel & Events</mat-option>
+                        <mat-option value="option2">Gaming</mat-option>
+                        <mat-option value="option2">People & Blogs</mat-option>
+                        <mat-option value="option2">Comedy</mat-option>
+                        <mat-option value="option2">Entertainment</mat-option>
+                        <mat-option value="option2">News & Politics</mat-option>
+                        <mat-option value="option2">How to & Style</mat-option>
+                        <mat-option value="option2">Education</mat-option>
+                        <mat-option value="option2">Science & technology</mat-option>
+                        <mat-option value="option2">Non-profits & Activism</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Visibility</mat-label>
+                    <mat-select [disabled]="disableSelect.value">
+                        <mat-option value="option1">Private</mat-option>
+                        <mat-option value="option2">Public</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 radio-div" >
+                <div>
+                    <label>Audience type</label>
+                </div>
+                <mat-radio-group aria-label="Audience type">
+                    <mat-radio-button value="1" style="display: block;" class="radio-btn">Yes, It's made for kids</mat-radio-button>
+                    <mat-radio-button value="2" style="display: block;">No, it's not made for kids</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="col-md-6 radio-div">
+                <div>
+                    <label>Age Restriction</label>
+                </div>
+                <mat-radio-group aria-label="Age Restriction">
+                    <mat-radio-button value="1" class="radio-btn">Yes, Restrict my videos to viewers over 18</mat-radio-button>
+                    <mat-radio-button value="2">No, don't restrict my videos to viewers over 18</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Add search keywords</mat-label>
+                    <mat-chip-list #chipList aria-label="tag selection">
+                        <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+                            {{tag.name}}
+                            <button matChipRemove>
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </mat-chip>
+                        <input placeholder="New tag..." [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                            (matChipInputTokenEnd)="add($event)">
+                    </mat-chip-list>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="button-div">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!registerForm.form.valid" (click)="register()">Save</button>
+        </div>
+    </form>
+</div>
+
+
+<!-- <form class="example-form">
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Video Url</mat-label>
+            <input matInput placeholder="url">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Video title</mat-label>
+            <input matInput placeholder="your title">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Video duration</mat-label>
+            <input matInput placeholder="your title">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Channel title</mat-label>
+            <input matInput placeholder="your title">
+        </mat-form-field>
+    </div>
+    <div>
+        <label style="display: block;">Audience type</label>
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Yes,its made for Kids</mat-radio-button>
+            <mat-radio-button value="2">Not for kids</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div>
+        <label style="display: block;">Age Restriction</label>
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Yes, Restrict my videos to viewers over 18</mat-radio-button>
+            <mat-radio-button value="2">No, don't restrict my videos to viewers over 18</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Tags</mat-label>
+            <input matInput placeholder="Add your tags">
+        </mat-form-field>  
+    </div>
+    recording date
+</form> -->

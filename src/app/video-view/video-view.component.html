@@ -1,0 +1,45 @@
+<div *ngIf="videoObservable | async; let video">
+    <div style="display: flex;">
+        <div style="margin-right: 20px;">
+            <youtube-player [videoId]="video.id"></youtube-player>
+        </div>
+        <div style="width: 50%;">
+            <h2>{{video.snippet.title}}</h2>
+            <div class="container">
+                <div>
+                    <p>{{video.statistics.viewCount}} views . {{video.snippet.relativeTime}}</p>
+                </div>
+                <div>
+                    <span><a href="">
+                            <mat-icon class="bottom-icons">thumb_up</mat-icon>
+                        </a><span class="statistics-text">{{video.statistics.likeCount}}</span></span>
+                    <span> <a href="">
+                            <mat-icon class="bottom-icons">thumb_down</mat-icon>
+                        </a><span class="statistics-text">DISLIKE</span></span>
+                    <span> <a href="">
+                            <mat-icon class="bottom-icons">share</mat-icon>
+                        </a><span class="statistics-text">SHARE</span></span>
+                    <span> <a href="">
+                            <mat-icon class="bottom-icons">add_to_photos</mat-icon>
+                        </a><span class="statistics-text">SAVE</span></span>
+                    <span><a href="">
+                            <mat-icon class="bottom-icons">more_horiz</mat-icon>
+                        </a></span>
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div>
+                    <h3 style="margin-bottom:0">{{video.snippet.channelTitle}}</h3>
+                    <h5 style="color: rgb(150, 141, 141);">24.1k subscribers</h5>
+                </div>
+                <div>
+                    <button mat-raised-button color="primary">SUBSCRIBE</button>
+                </div>
+            </div>
+            <div class="desc">
+                <p style="margin-left: 10px;">{{video.snippet.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>

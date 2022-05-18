@@ -1,0 +1,75 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'over'" [opened]="(isHandset$ | async) === true">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">
+        <mat-icon class="nav-icons">home</mat-icon>Home
+      </a>
+      <a mat-list-item href="#">
+        <mat-icon class="nav-icons">explore</mat-icon>Explore
+      </a>
+      <a mat-list-item href="#">
+        <mat-icon class="nav-icons">subscriptions</mat-icon>Subscriptions
+      </a>
+      <a mat-list-item href="#">
+        <mat-icon class="nav-icons">library_add</mat-icon>Library
+      </a>
+      <a mat-list-item href="#">
+        <mat-icon class="nav-icons">history</mat-icon>History
+      </a>
+    </mat-nav-list>
+    <hr>
+    <p>Sign in to like comments, videos and subscribe</p>
+    <a mat-stroked-button color="primary" routerLink = "/authenticate">
+      <mat-icon class="nav-icons">login</mat-icon>Sign In
+    </a>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <a routerLink = "" style="color: white; text-decoration: none;"><span>ViewTube</span></a>
+      </span>
+      <mat-form-field id="search" style="width: 35%;">
+        <input type="text" matInput placeholder="Search" >
+        <a href="" class="icons"><mat-icon>search</mat-icon></a>
+        <a href="" class="icons"><mat-icon>micro</mat-icon></a>
+      </mat-form-field>
+      <span id="icons">
+        <a href="">
+          <mat-icon>notifications</mat-icon>
+        </a>
+        <a routerLink="/upload">
+          <mat-icon>video_call</mat-icon>
+        </a>
+        <a href="">
+          <mat-icon>apps</mat-icon>
+        </a>
+        <button id="profile" mat-button [matMenuTriggerFor]="menu">
+          <mat-icon style="position: relative; bottom: 7px;">person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>Settings
+          </button>
+          <button mat-menu-item>
+            <mat-icon>help</mat-icon>Help
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notificationsoff</mat-icon>Disable alerts
+          </button>
+          <button mat-menu-item>
+            <mat-icon>feedback</mat-icon>Send feedback
+          </button>
+        </mat-menu>
+      </span>
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <app-chips-bar></app-chips-bar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

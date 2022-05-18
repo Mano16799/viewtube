@@ -1,0 +1,110 @@
+<div class="container">
+    <form [formGroup]="liveStreamForm">
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Event title</mat-label>
+                <input matInput class="form-control" required formControlName="eventTitle">
+            </mat-form-field>
+        </div>
+
+        <!-- title validation -->
+        <div *ngIf="eventTitle.touched && eventTitle.errors?.required" class="invalid">
+            Event title is required.
+        </div>
+        <div *ngIf="eventTitle.dirty && eventTitle.errors?.maxlength" class="invalid">
+            Maximum length should be 100 characters
+        </div>
+
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Event Start Date</mat-label>
+                <input type="datetime-local" matInput class="form-control" required formControlName="startDate">
+            </mat-form-field>
+        </div>
+
+        <!-- date validation -->
+        <div *ngIf="startDate.touched && startDate.errors?.required" class="invalid">
+            Event start date is required.
+        </div>
+        <div *ngIf="(startDate.dirty && startDate.errors?.forbiddenDate)" class="invalid">
+            Event start date should be after the current date.
+        </div>
+
+        <!-- <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Event Start Time</mat-label>
+                <input type="time" matInput class="form-control" required formControlName="startTime">
+            </mat-form-field>
+        </div> -->
+
+        <!-- start time validation -->
+        <!-- <div *ngIf="startTime.touched && startTime.errors?.required" class="invalid">
+            Event start time is required.
+        </div>
+
+        <div *ngIf="(startTime.dirty && startTime.errors?.forbiddenTime)" class="invalid">
+            Event start date time should be greater than current date time.
+        </div> -->
+
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Event End Date</mat-label>
+                <input type="datetime-local" matInput class="form-control" required formControlName="endDate">
+            </mat-form-field>
+        </div>
+
+        <!-- end date validation -->
+        <div *ngIf="endDate.touched && endDate.errors?.required" class="invalid">
+            Event end date is required.
+        </div>
+
+        <div *ngIf="((endDate.dirty && endDate.errors?.forbiddenDate) ||(startDate.errors?.endDateError))"
+            class="invalid">
+            Event end date should be greater than start date.
+        </div>
+
+        <!-- <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Event End Time</mat-label>
+                <input type="time" matInput class="form-control" required formControlName="endTime">
+            </mat-form-field>
+        </div> -->
+
+        <!-- end time validation -->
+        <!-- <div *ngIf="endTime.touched && endTime.errors?.required" class="invalid">
+            Event end time is required.
+        </div>
+        <div *ngIf="endTime.dirty && endTime.errors?.forbiddenTime" class="invalid">
+            Event end date time should be greater than event start date time.
+        </div> -->
+
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Event Details</mat-label>
+                <textarea matInput></textarea>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field class="example-full-width" appearance="fill" width="100px">
+                <mat-label>Add search keywords</mat-label>
+                <mat-chip-list #chipList aria-label="tag selection">
+                    <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+                        {{tag.name}}
+                        <button matChipRemove>
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip>
+                    <input placeholder="New tag..." [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)" formControlName="guestList">
+                </mat-chip-list>
+            </mat-form-field>
+        </div>
+        <div  class="button-div">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!liveStreamForm.valid" (click)="register()">
+                Save
+            </button>
+        </div>
+    </form>
+</div>

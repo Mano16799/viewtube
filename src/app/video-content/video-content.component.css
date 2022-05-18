@@ -1,0 +1,39 @@
+.grid-container{
+    background-color: rgb(77, 77, 77);
+}
+
+.example-card{
+    height: 300px;
+    width: 300px;
+}
+
+img{
+    height: 160px;
+    object-fit: cover;
+}
+.video-title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.details{
+    display: inline;
+}
+
+.time-stamp{
+    position:absolute;
+    bottom: 130px;
+    right: 10px;
+    background-color: black;
+    padding: 0 5px;
+    border-radius: 4px;
+}
+
+.view-large-image {
+    margin: 20px;
+    /* height: 500px; */
+}
+

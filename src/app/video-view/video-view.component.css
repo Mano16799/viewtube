@@ -1,0 +1,20 @@
+mat-icon{
+  color: white;
+}
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+.statistics-text{
+  font-size: 11px;
+  position: relative;
+  bottom: 8px;
+  margin-right: 12px;
+  margin-left: 4px;
+}
+.desc {
+  font-size: 16px;
+  line-height: 16px;
+  height: 208px;
+  overflow: hidden;
+}

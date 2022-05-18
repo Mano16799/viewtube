@@ -1,0 +1,25 @@
+.container{
+    width:40%;
+    margin:2% auto;
+}
+.input-group-text{
+    width: 20%;
+}
+.example-chip-list{
+    color: black;
+}
+.example-full-width{
+    width: 100%;
+}
+.button-div{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.button-div button{
+    width: 40%;
+}
+.invalid{
+    margin-bottom: 5px;
+    color: red;
+    font-size: 12px;
+}

@@ -1,0 +1,30 @@
+<!-- Display video cards here with 
+    poster-image
+    length of video in hh:mm:ss format
+    2-liner description
+    duration since last published 
+    number of views
+-->
+<div [class.view-large-image]="viewOutlet.isActivated">
+    <router-outlet #viewOutlet="outlet"></router-outlet>
+</div>
+<div>
+    <mat-grid-list class="grid-container" cols="4" rowHeight="3.85:4">
+        <mat-grid-tile *ngFor="let data of metaData">
+            <mat-card class="example-card" matRipple [matRippleCentered]="centered" [matRippleDisabled]="disabled"
+                [matRippleUnbounded]="unbounded" [matRippleRadius]="radius" [matRippleColor]="color">
+                <div>
+                    <a routerLink="video-view/{{data.id}}"><img mat-card-image
+                            src={{data.snippet.thumbnails.high.url}}></a>
+                    <p class="time-stamp">{{data.contentDetails.length}}</p>
+                </div>
+                <mat-card-content>
+                    <p class="video-title">{{data.snippet.title}}</p>
+                    <p>{{data.snippet.channelTitle}}</p>
+                    <span class="details">{{data.statistics.viewCount}} views.
+                        {{data.snippet.relativeTime}}</span>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

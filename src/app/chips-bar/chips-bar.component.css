@@ -1,0 +1,8 @@
+div{
+    margin: 15px 0;
+    display: flex;
+}
+div button{
+    margin:0 10px;
+    border-radius: 25px;
+}
